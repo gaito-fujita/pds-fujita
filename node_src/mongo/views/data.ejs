@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="">
+  <!-- <link type="text/css" href="./style.css" rel="stylesheet"> -->
+</head>
+<body>
+  <h3>あなたに関するデータ</h3>
+  <table class="table" border="1" width="1300">
+    <% for(var i in list){ %>
+      <tr>
+        <% for(var j in list[i]){ %>
+          <% if(j==2){ %>
+            <td>
+              <% if(i==0){ %>
+                <%= list[i][j] %>
+              <% }else{ %>
+                <% for(var k in list[i][j]){ %>
+                  <%= list[i][j][k] %>
+                  <br>
+                <% } %>
+              <% } %>
+            </td>
+          <% }else{ %>
+            <td>
+              <%= list[i][j] %>
+            </td>
+          <% } %>
+        <% } %>
+      </tr>
+    <% } %>
+  </table>
+</body>
+</html>

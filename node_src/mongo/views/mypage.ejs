@@ -1,7 +1,16 @@
 <!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="">
+</head>
 <body>
   <% if (user) { %>
-    <h2>こんにちわ {{user.name}}さん</h2>
+    <div class="line anim"></div>
+    <h2>こんにちは <%= user.name %>さん</h2>
+    <p><a href="/mypage/ocunet_log">学内ネットワークログ</a></p>
     <form action="/users/logout" method="post">
       <input type="submit" value="LOGOUT">
     </form>

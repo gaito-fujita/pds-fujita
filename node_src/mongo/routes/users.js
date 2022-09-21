@@ -5,9 +5,18 @@ const passport = require('passport');
 const router = express.Router();
 
 
+/* GET users */
+router.get('/', function(req, res, next) {
+  if (req.user) {
+    res.redirect('/mypage');
+  } else {
+    res.redirect('/users/login');
+  }
+});
+
 /* GET users/register */
 router.get('/register', function(req, res, next) {
-  res.render('register');
+  res.render('register', { title: 'アカウント登録' });
 });
 
 /* POST users/register */
@@ -60,8 +69,7 @@ router.post('/register', (req, res) => {
               newUser
                 .save()
                 .then(user => {
-                  // res.redirect('users/login');
-                  res.render('registered');
+                  res.render('registered', { title: 'アカウント登録' });
                 })
                 .catch(err => console.log(err));
             })
@@ -74,8 +82,12 @@ router.post('/register', (req, res) => {
 
 /* GET users/login */
 router.get('/login', (req, res, next) => {
-  res.render('login');
-  next();
+  res.render('login', { title: 'ログイン' });
+  // next();
+  /* ↑ これがあるとlogoutしたときに
+   * Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+   * というエラー分が表示される
+   */
 })
 
 /* POST users/login */

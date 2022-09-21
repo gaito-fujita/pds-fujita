@@ -10,8 +10,8 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - ./.db:/data/db
-      - ./.configdb:/data/configdb
+      - ./db:/data/db
+      - ./configdb:/data/configdb
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: password
@@ -26,4 +26,30 @@ services:
       - 3000:3000
     volumes:
       - ./node_src:/src
+    working_dir: "/src"
+
+  insertdata:
+    container_name: "insertdata"
+    hostname: "insertdata"
+    # image: python:3.10.2
+    build: "./"
+    tty: true
+    restart: always
+    # ports:
+    #   - 3000:3000
+    volumes:
+      - ./insertdata_src:/src
+    working_dir: "/src"
+
+  filter:
+    container_name: "filter"
+    hostname: "filter"
+    # image: python:3.10.2
+    build: "./filter/"
+    tty: true
+    restart: always
+    # ports:
+    #   - 3000:3000
+    volumes:
+      - ./filter_src:/src
     working_dir: "/src"

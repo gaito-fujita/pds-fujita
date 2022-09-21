@@ -1,0 +1,110 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+
+<style>
+#ex_chart1 {max-width:640px;max-height:480px;}
+#ex_chart2 {max-width:640px;max-height:480px;}
+#ex_chart3 {max-width:640px;max-height:480px;}
+#ex_chart4 {max-width:640px;max-height:480px;}
+</style>
+
+<canvas id="ex_chart1"></canvas>
+<br><br><br><br><br>
+<canvas id="ex_chart2"></canvas>
+<br><br><br><br><br>
+<canvas id="ex_chart3"></canvas>
+<br><br><br><br><br>
+<canvas id="ex_chart4"></canvas>
+
+<script>
+var ctx1 = document.getElementById('ex_chart1');
+var ctx2 = document.getElementById('ex_chart2');
+var ctx3 = document.getElementById('ex_chart3');
+var ctx4 = document.getElementById('ex_chart4');
+
+//これをしておかないとグラフの中で変数として扱うことができない
+var board=JSON.parse('<%-JSON.stringify(data)%>');
+
+var labels_list = []
+for(i=0;i<5;i++){
+    labels_list.push(board[i].日時)
+}
+
+var data1_list=[]
+for(i=0;i<5;i++){
+    data1_list.push(board[i].活動度)
+}
+var data1 = {
+    labels: labels_list,
+    datasets: [{
+        label: "活動度",
+        data: data1_list,
+        borderColor: 'rgba(255, 100, 100, 1)',
+        lineTension:0.2
+    }]
+};
+
+var data2_list=[]
+for(i=0;i<5;i++){
+    data2_list.push(board[i].運動量)
+}
+var data2 = {
+    labels: labels_list,
+    datasets: [{
+        label: "運動量",
+        data: data2_list,
+        borderColor: 'rgba(255, 100, 100, 1)',
+        lineTension:0.2
+    }]
+};
+
+var data3_list=[]
+for(i=0;i<5;i++){
+    data3_list.push(board[i].歩数)
+}
+var data3 = {
+    labels: labels_list,
+    datasets: [{
+        label: "歩数",
+        data: data3_list,
+        borderColor: 'rgba(255, 100, 100, 1)',
+        lineTension:0.2
+    }]
+};
+
+var data4_list=[]
+for(i=0;i<5;i++){
+    data4_list.push(board[i].総消費カロリー)
+}
+var data4 = {
+    labels: labels_list,
+    datasets: [{
+        label: "総消費カロリー",
+        data: data4_list,
+        borderColor: 'rgba(255, 100, 100, 1)',
+        lineTension:0.2
+    }]
+};
+
+var options = {};
+var ex_chart1 = new Chart(ctx1, {
+    type: 'line',
+    data: data1,
+    options: options
+});
+var ex_chart2 = new Chart(ctx2, {
+    type: 'line',
+    data: data2,
+    options: options
+});
+var ex_chart3 = new Chart(ctx3, {
+    type: 'line',
+    data: data3,
+    options: options
+});
+var ex_chart4 = new Chart(ctx4, {
+    type: 'line',
+    data: data4,
+    options: options
+});
+
+</script>

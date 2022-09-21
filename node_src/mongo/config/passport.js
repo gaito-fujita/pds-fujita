@@ -11,25 +11,25 @@ module.exports = function (passport) {
             User.findOne({ email: email }, (err, user) => {
                 if (err) { return done(err); }
                 if (!user) {
-                    return done(null,false, {message: 'メールアドレスが正しくありません'});
+                    return done(null, false, { message: 'メールアドレスが正しくありません' });
                 }
-                bcrypt.compare(password, user.password, (err,isMatch)=>{
-                    if(err) throw err
-                    if(isMatch){
-                        return done(null,user)
-                    } else{
-                        return done(null, false, {message: 'パスワードが正しくありません'})
+                bcrypt.compare(password, user.password, (err, isMatch) => {
+                    if (err) throw err
+                    if (isMatch) {
+                        return done(null, user)
+                    } else {
+                        return done(null, false, { message: 'パスワードが正しくありません' })
                     }
                 })
             })
         })
     )
-    passport.serializeUser(function(user, done) {
+    passport.serializeUser(function (user, done) {
         done(null, user.id);
     });
-    passport.deserializeUser(function(id, done) {
-        User.findById(id, function(err, user) {
-          done(err, user);
+    passport.deserializeUser(function (id, done) {
+        User.findById(id, function (err, user) {
+            done(err, user);
         });
     });
 

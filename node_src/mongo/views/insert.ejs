@@ -1,0 +1,101 @@
+<!-- <!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>サンプル</title>
+</head>
+<body>
+
+<p>サンプルページです。</p>
+<div>
+  <form id="travelbox" method="post">
+  <label><input type="radio" name="travel" value="okinawa">沖縄</label>
+  <label><input type="radio" name="travel" value="hokkaidou">北海道</label>
+  <label><input type="radio" name="travel" value="kyoto">京都</label>
+  </form>
+</div>
+  
+<div>
+  <input type="submit" value="Check" id="checkButton">
+</div>
+
+<script>
+  function butotnClick(){
+    let checkValue = travelbox.elements['travel'].value;
+    console.log('選択されているのは ' + checkValue + ' です');
+  }
+  
+  let travelbox = document.getElementById('travelbox');
+  travelbox.elements[1].checked = true;
+  
+  let checkButton = document.getElementById('checkButton');
+  checkButton.addEventListener('click', butotnClick);
+</script>
+  
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="">
+</head>
+<body>
+
+  <h3>mongoDBにJSONファイルを保存</h3>
+  <form action="/activity/insert/post" method="POST" name="mail_form">
+    データベース名：<input type="text" name="database">
+    <br>
+    コレクション名：<input type="text" name="collection">
+    <br>
+    内容(JSON形式のみ):
+    <br>
+    <textarea name="jsonfile" cols="50" rows="30" placeholder="placeholder"></textarea>
+    <br>
+    <input type="submit" value="送信">
+  </form>
+  <h4><%=message%></h4>
+
+
+  <!-- <form action="/mypage/pymongo_test/post" method="POST" name="mail_form">
+    入力フォーム確認：<input type="text" name="mail">
+    複数行入力フォーム：
+    <textarea name="textarea" cols="50" rows="5" placeholder="placeholder"></textarea>
+    <input type="submit" value="送信">
+  </form>
+
+  <h4>テキストボックス</h4>
+  <input type="text" name="text">
+
+  <h4>パスワード</h4>
+  <input type="password" name="password">
+
+  <h4>複数行のテキスト</h4>
+  <textarea name="textarea" cols="50" rows="5" placeholder="placeholder"></textarea>
+   -->
+  <!-- <h4>ラジオボタン</h4>
+  <input type="radio" name="rb1" value="項目1" checked>項目1
+  <input type="radio" name="rb1" value="項目2">項目2
+  <input type="radio" name="rb1" value="項目3">項目3
+
+  <h4>チェックボックス</h4>
+  <input type="checkbox" name="cb1" value="項目1">項目1
+  <input type="checkbox" name="cb2" value="項目2">項目2
+  <input type="checkbox" name="cb3" value="項目3">項目3
+
+  <h4>セレクトボックス</h4>
+  <select name="selectbox">
+  <option value="項目1">項目1</option>
+  <option value="項目2">項目2</option>
+  <option value="項目3">項目3</option>
+  </select>
+
+  <h4>送信ボタン</h4>
+  <input type="submit" value="送信"> -->
+
+</body>
+</html>
